@@ -106,7 +106,7 @@ window.onload = () => {
       { theme: "outline", size: "large" }
     );
 
-    google.accounts.id.prompt(); // Muestra el One Tap
+    
   }
 };
 
