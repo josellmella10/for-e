@@ -17,6 +17,10 @@ function enviarFormulario(e) {
     return;
   }
 
+  const boton = e.target.querySelector("button[type='submit']");
+  boton.disabled = true;
+  boton.textContent = "Enviando...";
+
   const datos = {
     nombre: document.getElementById("nombre").value,
     telefono: document.getElementById("telefono").value,
@@ -38,8 +42,13 @@ function enviarFormulario(e) {
   .catch(err => {
     alert("Error al enviar la donación.");
     console.error(err);
+  })
+  .finally(() => {
+    boton.disabled = false;
+    boton.textContent = "Donar";
   });
 }
+
 
 function actualizarContador() {
   fetch(SCRIPT_URL)
