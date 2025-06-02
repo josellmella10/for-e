@@ -1,0 +1,164 @@
+:root {
+  --verde: #3CB371;
+  --gris-claro: #f4f4f4;
+  --texto: #222222;
+  --blanco: #ffffff;
+}
+
+body {
+    background-color: var(--gris-claro);
+    color: var(--texto);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: var(--verde);
+    padding: 2rem;
+    color: var(--blanco);
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 12px;
+}
+
+nav ul li a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 2rem;
+}
+
+.bloque {
+    background: var(--blanco);
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.boton-donar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--verde);
+    color: var(--blanco);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.boton-donar:hover {
+    background-color: #2e8b57;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--verde);
+    color: var(--blanco);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e8b57;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    .bloque {
+        margin: 1rem;
+        padding: 1.2rem;
+    }
+
+    .boton-donar {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+.seccion {
+    display: block;
+}
+
+.oculto {
+    display: none;
+}
+#contador-kilos {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--verde);
+    color: var(--blanco);
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+#tabla-donaciones {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#tabla-donaciones th,
+#tabla-donaciones td {
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+#tabla-donaciones th {
+  background-color: var(--verde);
+  color: white;
+}
+
