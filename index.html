@@ -47,27 +47,40 @@
 
 
     <!-- Sección de Donación -->
-    <section id="donar" class="seccion oculto">
-      <h2>Formulario de Donación</h2>
-      <form onsubmit="enviarFormulario(event)">
-        <input id="nombre" placeholder="Nombre completo" required>
-        <input id="telefono" placeholder="Número de contacto" required>
-        <input id="direccion" placeholder="Dirección" required>
-        <input id="cantidad" type="number" placeholder="Cantidad de ropa (kg)" required>
-        <button type="submit">Donar</button>
-      </form>
-    </section>
+    <!-- Reemplaza la sección DONAR por esta versión actualizada -->
+<section id="donar" class="seccion oculto">
+  <h2>Formulario de Donación</h2>
+  <form onsubmit="enviarFormulario(event)">
+    <input id="nombre" placeholder="Nombre completo" required>
+    <input id="telefono" placeholder="Número de contacto" required>
+    <input id="direccion" placeholder="Dirección" required>
 
-    <!-- Estado de donación -->
-    <section id="estado-donacion" class="seccion oculto">
-      <h2>Estado de tu Donación</h2>
-      <p id="monedas-obtenidas"></p>
-      <ul>
-        <li id="paso1">⚪ En confirmación</li>
-        <li id="paso2">⚪ En busca de la ropa</li>
-        <li id="paso3">⚪ Ropa obtenida</li>
-      </ul>
-    </section>
+    <label>¿Qué prendas vas a donar?</label>
+    <table>
+      <tbody id="tabla-prendas">
+        <tr><td>Polera</td><td><input type="number" min="0" value="0" data-tipo="polera"></td></tr>
+        <tr><td>Pantalón</td><td><input type="number" min="0" value="0" data-tipo="pantalon"></td></tr>
+        <tr><td>Short</td><td><input type="number" min="0" value="0" data-tipo="short"></td></tr>
+        <tr><td>Falda</td><td><input type="number" min="0" value="0" data-tipo="falda"></td></tr>
+        <tr><td>Polerón</td><td><input type="number" min="0" value="0" data-tipo="poleron"></td></tr>
+        <tr><td>Chaqueta</td><td><input type="number" min="0" value="0" data-tipo="chaqueta"></td></tr>
+        <tr><td>Calcetines</td><td><input type="number" min="0" value="0" data-tipo="calcetines"></td></tr>
+        <tr><td>Ropa interior</td><td><input type="number" min="0" value="0" data-tipo="ropa_interior"></td></tr>
+        <tr><td>Guantes</td><td><input type="number" min="0" value="0" data-tipo="guantes"></td></tr>
+        <tr><td>Gorro</td><td><input type="number" min="0" value="0" data-tipo="gorro"></td></tr>
+        <tr><td>Bufanda</td><td><input type="number" min="0" value="0" data-tipo="bufanda"></td></tr>
+      </tbody>
+    </table>
+
+    <button type="submit">Donar</button>
+  </form>
+
+  <!-- Mostrar impacto ecológico tras enviar -->
+  <div id="resultado-impacto" style="margin-top: 1em; font-weight: bold;"></div>
+</section>
+
+
+    
 
     <section id="mis-donaciones" class="seccion oculto">
         <h2>Mis Donaciones</h2>
