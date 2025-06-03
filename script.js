@@ -1,13 +1,15 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwy1t5QkL0YltzUCtyBJz6BX3g-WzTnJlP8-EykVshwJaGrjSohGh1GgKQ93Mp1O1VG/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4aPw2Pe6IVOyGHE-8myDQSCF5kW82sj8lUvvuZMoTpEtc-ybYmhXYaJUBgl-svIIu/exec";
 
 let usuarioGoogle = null;
 
-function mostrarSeccion(id) {
+function mostrarSeccion(id, hacerScroll = true) {
   const secciones = document.querySelectorAll('.seccion');
   secciones.forEach(sec => sec.classList.add('oculto'));
   document.getElementById(id).classList.remove('oculto');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  
 }
+
 
 function enviarFormulario(e) {
   e.preventDefault();
@@ -17,15 +19,43 @@ function enviarFormulario(e) {
     return;
   }
 
-  const boton = e.target.querySelector("button[type='submit']");
+  const boton = e.submitter || e.target.querySelector("button[type='submit']");
   boton.disabled = true;
   boton.textContent = "Enviando...";
+
+  const pesos = {
+    polera: 200,
+    pantalon: 500,
+    short: 250,
+    falda: 300,
+    poleron: 600,
+    chaqueta: 800,
+    calcetines: 80,
+    ropa_interior: 100,
+    guantes: 120,
+    gorro: 150,
+    bufanda: 200
+  };
+
+  let pesoTotal = 0;
+  const inputs = document.querySelectorAll("#tabla-prendas input");
+
+  inputs.forEach(input => {
+    const tipo = input.dataset.tipo;
+    const cantidad = parseInt(input.value) || 0;
+    if (pesos[tipo]) {
+      pesoTotal += cantidad * pesos[tipo];
+    }
+  });
+
+  const kilos = pesoTotal / 1000;
+  const litrosSalvados = Math.round(kilos * 2.216 * 100) / 100;
 
   const datos = {
     nombre: document.getElementById("nombre").value,
     telefono: document.getElementById("telefono").value,
     direccion: document.getElementById("direccion").value,
-    cantidad: document.getElementById("cantidad").value,
+    cantidad: kilos.toFixed(2),
     correo: usuarioGoogle.email
   };
 
@@ -33,21 +63,26 @@ function enviarFormulario(e) {
     method: "POST",
     body: JSON.stringify(datos)
   })
-  .then(res => {
-    document.querySelector("form").reset();
-    obtenerEstadoDonacion(usuarioGoogle.email);
-    mostrarSeccion("estado-donacion");
-    actualizarContador();
-  })
-  .catch(err => {
-    alert("Error al enviar la donación.");
-    console.error(err);
-  })
-  .finally(() => {
-    boton.disabled = false;
-    boton.textContent = "Donar";
-  });
+    .then(res => {
+      fetch(`${SCRIPT_URL}?accion=contarDonacion`);
+      document.querySelector("form").reset();
+      mostrarSeccion("donar");
+
+      document.getElementById("resultado-impacto").innerHTML =
+        `🧺 Has donado ${pesoTotal} gramos de ropa<br>💧 Eso equivale a ${litrosSalvados} litros de agua salvada.`;
+
+      actualizarContador();
+    })
+    .catch(err => {
+      alert("Error al enviar la donación.");
+      console.error("Error al enviar:", err);
+    })
+    .finally(() => {
+      boton.disabled = false;
+      boton.textContent = "Donar";
+    });
 }
+
 
 
 function actualizarContador() {
@@ -64,33 +99,12 @@ function actualizarContador() {
     });
 }
 
-function obtenerEstadoDonacion(correo) {
-  fetch(`${SCRIPT_URL}?correo=${correo}`)
-    .then(res => res.json())
-    .then(data => {
-      const estado = data.estado;
-      const kilos = parseFloat(data.cantidad);
-      const monedas = Math.floor(kilos);
 
-      document.getElementById("estado-donacion").classList.remove("oculto");
-
-      document.getElementById("monedas-obtenidas").textContent =
-        `🎉 Has ganado ${monedas} moneda${monedas !== 1 ? 's' : ''} For-e 🎉`;
-
-      document.getElementById("paso1").textContent =
-        estado === "En confirmación" || !estado ? "✅ En confirmación" : "🔘 En confirmación";
-      document.getElementById("paso2").textContent =
-        estado === "En busca de la ropa" ? "✅ En busca de la ropa" :
-        estado === "Ropa obtenida" ? "🔘 En busca de la ropa" : "⚪ En busca de la ropa";
-      document.getElementById("paso3").textContent =
-        estado === "Ropa obtenida" ? "✅ Ropa obtenida" : "⚪ Ropa obtenida";
-    })
-    .catch(err => {
-      console.error("Error al obtener el estado de la donación:", err);
-    });
-}
 
 window.onload = () => {
+  // Contar visita
+  fetch(`${SCRIPT_URL}?accion=contarVisita`);
+
   const usuarioGuardado = localStorage.getItem("usuarioGoogle");
 
   if (usuarioGuardado) {
@@ -102,7 +116,6 @@ window.onload = () => {
     document.getElementById("saludo-usuario").textContent = `Hola, ${usuarioGoogle.name} 👋`;
     document.getElementById("saludo-usuario").classList.remove("oculto");
     mostrarSeccion("donar");
-    obtenerEstadoDonacion(usuarioGoogle.email);
   } else {
     // Solo mostrar botón si no hay sesión
     google.accounts.id.initialize({
@@ -115,7 +128,7 @@ window.onload = () => {
       { theme: "outline", size: "large" }
     );
 
-    
+    google.accounts.id.prompt(); // Muestra el One Tap
   }
 };
 
@@ -138,7 +151,7 @@ function manejarLogin(response) {
   document.getElementById("saludo-usuario").classList.remove("oculto");
 
   mostrarSeccion("donar");
-  obtenerEstadoDonacion(usuarioGoogle.email);
+  fetch(`${SCRIPT_URL}?accion=contarLogin`);
 }
 
 
@@ -215,3 +228,4 @@ function eliminarDonacion(Fecha) {
       console.error(err);
     });
 }
+
