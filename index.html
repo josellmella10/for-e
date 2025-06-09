@@ -29,6 +29,21 @@
   </header>
 
   <main>
+    <section id="donar" class="seccion oculto">
+      <h2>Bienvenido a Roppi</h2>
+      <form onsubmit="event.preventDefault(); coordinarRetiro();">
+        <label>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!
+        
+        
+       </label>
+        
+
+        <button type="submit">Coordina el retiro</button>
+      </form>
+
+      <div id="resultado-impacto" style="margin-top: 1em; font-weight: bold;"></div>
+    </section>
+    
     <section id="inicio" class="seccion">
       <h2>Contador de Ropa</h2>
       <p>En desarrollo</p>
@@ -45,20 +60,7 @@
     </section>
 
     <!-- Sección de Donación actualizada -->
-    <section id="donar" class="seccion oculto">
-      <h2>Bienvenido a Roppi</h2>
-      <form onsubmit="event.preventDefault(); coordinarRetiro();">
-        <label>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!
-        
-        
-       </label>
-        
-
-        <button type="submit">Coordina el retiro</button>
-      </form>
-
-      <div id="resultado-impacto" style="margin-top: 1em; font-weight: bold;"></div>
-    </section>
+    
 
     <!-- Mis Donaciones sin columna Dirección -->
     <section id="mis-donaciones" class="seccion oculto">
