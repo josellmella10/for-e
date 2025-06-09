@@ -17,8 +17,8 @@
         <li><button onclick="mostrarSeccion('inicio')">Inicio</button></li>
         <li><button onclick="mostrarSeccion('quienes')">Quiénes somos</button></li>
         <li><button onclick="mostrarSeccion('contacto')">Contacto</button></li>
-        <li><button onclick="mostrarSeccion('donar')">Donar</button></li>
-        <button onclick="verMisDonaciones()">Mis Donaciones</button>
+        <li><button onclick="mostrarSeccion('donar')">Formulario</button></li>
+        <button onclick="verMisDonaciones()">Mi Ropa</button>
       </ul>
     </nav>
 
@@ -46,9 +46,9 @@
 
     <!-- Sección de Donación actualizada -->
     <section id="donar" class="seccion oculto">
-      <h2>Formulario de Donación</h2>
+      <h2>Formulario</h2>
       <form onsubmit="event.preventDefault(); coordinarRetiro();">
-        <label>¿Qué prendas vas a donar?</label>
+        <label>¿Qué prendas tienes abandonada?</label>
         <table>
           <tbody id="tabla-prendas">
             <tr><td>Polera</td><td><input type="number" min="0" value="0" data-tipo="polera"></td></tr>
