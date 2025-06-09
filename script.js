@@ -25,12 +25,9 @@ function coordinarRetiro() {
   });
 
   const kilos = (pesoTotal / 1000).toFixed(2);
-  if (kilos === "0.00") {
-    alert("Por favor, selecciona al menos una prenda para coordinar el retiro.");
-    return;
-  }
+  
 
-  const mensaje = `Hola, quiero donar ${kilos} kg de ropa y quiero coordinar el retiro`;
+  const mensaje = `Hola, quiero donar ropa y quiero coordinar el retiro`;
   const url = `https://wa.me/56984113919?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
 
