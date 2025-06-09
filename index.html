@@ -14,11 +14,11 @@
 
     <nav>
       <ul>
-        <li><button onclick="mostrarSeccion('inicio')">Inicio</button></li>
+        <li><button onclick="mostrarSeccion('donar')">Inicio</button></li>
         <li><button onclick="mostrarSeccion('quienes')">Quiénes somos</button></li>
         <li><button onclick="mostrarSeccion('contacto')">Contacto</button></li>
-        <li><button onclick="mostrarSeccion('donar')">Formulario</button></li>
-        <button onclick="verMisDonaciones()">Mi Ropa</button>
+        <li><button onclick="mostrarSeccion('inicio')">Contador (Próximamente)</button></li>
+        <button onclick="verMisDonaciones()">Mi Ropa (Próximamente)</button>
       </ul>
     </nav>
 
@@ -30,8 +30,8 @@
 
   <main>
     <section id="inicio" class="seccion">
-      <h2>Bienvenido a Roppi</h2>
-      <p>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!</p>
+      <h2>Contador de Ropa</h2>
+      <p>En desarrollo</p>
     </section>
 
     <section id="quienes" class="seccion oculto">
@@ -46,24 +46,10 @@
 
     <!-- Sección de Donación actualizada -->
     <section id="donar" class="seccion oculto">
-      <h2>Formulario</h2>
+      <h2>Bienvenido a Roppi</h2>
       <form onsubmit="event.preventDefault(); coordinarRetiro();">
-        <label>¿Qué prendas tienes abandonada?</label>
-        <table>
-          <tbody id="tabla-prendas">
-            <tr><td>Polera</td><td><input type="number" min="0" value="0" data-tipo="polera"></td></tr>
-            <tr><td>Pantalón</td><td><input type="number" min="0" value="0" data-tipo="pantalon"></td></tr>
-            <tr><td>Short</td><td><input type="number" min="0" value="0" data-tipo="short"></td></tr>
-            <tr><td>Falda</td><td><input type="number" min="0" value="0" data-tipo="falda"></td></tr>
-            <tr><td>Polerón</td><td><input type="number" min="0" value="0" data-tipo="poleron"></td></tr>
-            <tr><td>Chaqueta</td><td><input type="number" min="0" value="0" data-tipo="chaqueta"></td></tr>
-            <tr><td>Calcetines</td><td><input type="number" min="0" value="0" data-tipo="calcetines"></td></tr>
-            <tr><td>Ropa interior</td><td><input type="number" min="0" value="0" data-tipo="ropa_interior"></td></tr>
-            <tr><td>Guantes</td><td><input type="number" min="0" value="0" data-tipo="guantes"></td></tr>
-            <tr><td>Gorro</td><td><input type="number" min="0" value="0" data-tipo="gorro"></td></tr>
-            <tr><td>Bufanda</td><td><input type="number" min="0" value="0" data-tipo="bufanda"></td></tr>
-          </tbody>
-        </table>
+        <label>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!</label>
+        
 
         <button type="submit">Coordina el retiro</button>
       </form>
