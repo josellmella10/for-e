@@ -10,97 +10,82 @@
 <body>
 
   <header>
-  <h1>Roppi</h1>
+    <h1>Roppi</h1>
 
-  <nav>
-    <ul>
+    <nav>
+      <ul>
         <li><button onclick="mostrarSeccion('inicio')">Inicio</button></li>
         <li><button onclick="mostrarSeccion('quienes')">Quiénes somos</button></li>
         <li><button onclick="mostrarSeccion('contacto')">Contacto</button></li>
         <li><button onclick="mostrarSeccion('donar')">Donar</button></li>
         <button onclick="verMisDonaciones()">Mis Donaciones</button>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
 
-  <div id="contador-kilos">🧺 Cargando...</div>
-  <div id="google-login"></div>
-  <div id="saludo-usuario" class="oculto"></div>
-  <button id="cerrar-sesion" class="oculto">Cerrar sesión</button>
-</header>
-
+    <div id="contador-kilos">🧺 Cargando...</div>
+    <div id="google-login"></div>
+    <div id="saludo-usuario" class="oculto"></div>
+    <button id="cerrar-sesion" class="oculto">Cerrar sesión</button>
+  </header>
 
   <main>
     <section id="inicio" class="seccion">
-        <h2>Bienvenido a Roppi</h2>
-        <p>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!</p>
+      <h2>Bienvenido a Roppi</h2>
+      <p>Donar ropa ahora tiene recompensa. ¡Ayuda al planeta!</p>
     </section>
 
     <section id="quienes" class="seccion oculto">
-        <h2>¿Quiénes somos?</h2>
-        <p>Somos un equipo comprometido con la moda circular. Queremos dar nueva vida a la ropa usada.</p>
+      <h2>¿Quiénes somos?</h2>
+      <p>Somos un equipo comprometido con la moda circular. Queremos dar nueva vida a la ropa usada.</p>
     </section>
 
     <section id="contacto" class="seccion oculto">
-    <h2>Contacto</h2>
-        <p>Escríbenos a <a href="for.e.roppi@gmail.com">for.e.roppi@gmail.com</a> </p>
+      <h2>Contacto</h2>
+      <p>Escríbenos a <a href="mailto:for.e.roppi@gmail.com">for.e.roppi@gmail.com</a></p>
     </section>
 
-
-    <!-- Sección de Donación -->
-    <!-- Reemplaza la sección DONAR por esta versión actualizada -->
-<section id="donar" class="seccion oculto">
-  <h2>Formulario de Donación</h2>
-  <form onsubmit="enviarFormulario(event)">
-    <input id="nombre" placeholder="Nombre completo" required>
-    <input id="telefono" placeholder="Número de contacto" required>
-    <input id="direccion" placeholder="Dirección" required>
-
-    <label>¿Qué prendas vas a donar?</label>
-    <table>
-      <tbody id="tabla-prendas">
-        <tr><td>Polera</td><td><input type="number" min="0" value="0" data-tipo="polera"></td></tr>
-        <tr><td>Pantalón</td><td><input type="number" min="0" value="0" data-tipo="pantalon"></td></tr>
-        <tr><td>Short</td><td><input type="number" min="0" value="0" data-tipo="short"></td></tr>
-        <tr><td>Falda</td><td><input type="number" min="0" value="0" data-tipo="falda"></td></tr>
-        <tr><td>Polerón</td><td><input type="number" min="0" value="0" data-tipo="poleron"></td></tr>
-        <tr><td>Chaqueta</td><td><input type="number" min="0" value="0" data-tipo="chaqueta"></td></tr>
-        <tr><td>Calcetines</td><td><input type="number" min="0" value="0" data-tipo="calcetines"></td></tr>
-        <tr><td>Ropa interior</td><td><input type="number" min="0" value="0" data-tipo="ropa_interior"></td></tr>
-        <tr><td>Guantes</td><td><input type="number" min="0" value="0" data-tipo="guantes"></td></tr>
-        <tr><td>Gorro</td><td><input type="number" min="0" value="0" data-tipo="gorro"></td></tr>
-        <tr><td>Bufanda</td><td><input type="number" min="0" value="0" data-tipo="bufanda"></td></tr>
-      </tbody>
-    </table>
-
-    <button type="submit">Donar</button>
-  </form>
-
-  <!-- Mostrar impacto ecológico tras enviar -->
-  <div id="resultado-impacto" style="margin-top: 1em; font-weight: bold;"></div>
-</section>
-
-
-    
-
-    <section id="mis-donaciones" class="seccion oculto">
-        <h2>Mis Donaciones</h2>
-        <table id="tabla-donaciones">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Cantidad (kg)</th>
-                    <th>Dirección</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+    <!-- Sección de Donación actualizada -->
+    <section id="donar" class="seccion oculto">
+      <h2>Formulario de Donación</h2>
+      <form onsubmit="event.preventDefault(); coordinarRetiro();">
+        <label>¿Qué prendas vas a donar?</label>
+        <table>
+          <tbody id="tabla-prendas">
+            <tr><td>Polera</td><td><input type="number" min="0" value="0" data-tipo="polera"></td></tr>
+            <tr><td>Pantalón</td><td><input type="number" min="0" value="0" data-tipo="pantalon"></td></tr>
+            <tr><td>Short</td><td><input type="number" min="0" value="0" data-tipo="short"></td></tr>
+            <tr><td>Falda</td><td><input type="number" min="0" value="0" data-tipo="falda"></td></tr>
+            <tr><td>Polerón</td><td><input type="number" min="0" value="0" data-tipo="poleron"></td></tr>
+            <tr><td>Chaqueta</td><td><input type="number" min="0" value="0" data-tipo="chaqueta"></td></tr>
+            <tr><td>Calcetines</td><td><input type="number" min="0" value="0" data-tipo="calcetines"></td></tr>
+            <tr><td>Ropa interior</td><td><input type="number" min="0" value="0" data-tipo="ropa_interior"></td></tr>
+            <tr><td>Guantes</td><td><input type="number" min="0" value="0" data-tipo="guantes"></td></tr>
+            <tr><td>Gorro</td><td><input type="number" min="0" value="0" data-tipo="gorro"></td></tr>
+            <tr><td>Bufanda</td><td><input type="number" min="0" value="0" data-tipo="bufanda"></td></tr>
+          </tbody>
         </table>
-        
 
+        <button type="submit">Coordina el retiro</button>
+      </form>
+
+      <div id="resultado-impacto" style="margin-top: 1em; font-weight: bold;"></div>
     </section>
 
-
+    <!-- Mis Donaciones sin columna Dirección -->
+    <section id="mis-donaciones" class="seccion oculto">
+      <h2>Mis Donaciones</h2>
+      <table id="tabla-donaciones">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cantidad (kg)</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
   </main>
 
   <script src="script.js"></script>
