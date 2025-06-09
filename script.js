@@ -33,6 +33,16 @@ function coordinarRetiro() {
   const mensaje = `Hola, quiero donar ${kilos} kg de ropa y quiero coordinar el retiro`;
   const url = `https://wa.me/56984113919?text=${encodeURIComponent(mensaje)}`;
   window.open(url, '_blank');
+
+  // Registrar métrica "donacion"
+  fetch(`${SCRIPT_URL}?accion=contarDonacion`)
+    .then(() => console.log("Métrica de donación registrada"))
+    .catch(err => console.error("Error al registrar métrica:", err));
+
+    // Mostrar ahorro de agua
+    const litrosAhorrados = (totalKg * 2.216).toFixed(1);
+    document.getElementById('resultado-impacto').innerText =
+      `🌱 Ahorras aproximadamente ${litrosAhorrados} litros de agua.`;
 }
 
 function actualizarContador() {
