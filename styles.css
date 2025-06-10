@@ -1,8 +1,8 @@
 :root {
-  --verde: #3CB371;
-  --gris-claro: #f4f4f4;
+  --verde: #aa7847;
+  --gris-claro: #f2ddb2;
   --texto: #222222;
-  --blanco: #ffffff;
+  --blanco: #ffc987;
 }
 
 body {
@@ -68,7 +68,7 @@ section {
 }
 
 .boton-donar:hover {
-    background-color: #2e8b57;
+    background-color: #aa7847;
 }
 
 form {
@@ -97,7 +97,7 @@ button {
 }
 
 button:hover {
-    background-color: #2e8b57;
+    background-color: #301700;
 }
 
 @media (max-width: 600px) {
@@ -165,4 +165,14 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+#donar h2,
+#donar label {
+  text-align: center;
+  display: block;
+}
+#quienes,
+#contacto {
+  text-align: center;
+}
+
 
