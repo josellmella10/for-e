@@ -1,8 +1,8 @@
 :root {
-  --verde: #aa7847;
-  --gris-claro: #f2ddb2;
+  --verde: #114c14;
+  --gris-claro: #e6e0d8;
   --texto: #222222;
-  --blanco: #ffc987;
+  --blanco: #e6e0d8;
 }
 
 body {
@@ -68,7 +68,7 @@ section {
 }
 
 .boton-donar:hover {
-    background-color: #aa7847;
+    background-color: #114c14;
 }
 
 form {
@@ -97,7 +97,7 @@ button {
 }
 
 button:hover {
-    background-color: #301700;
+    background-color: #003e11;
 }
 
 @media (max-width: 600px) {
@@ -174,5 +174,24 @@ button:disabled {
 #contacto {
   text-align: center;
 }
+.imagen-equipo {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#video-roppi {
+  display: block;
+  max-width: 90%;
+  width: 30%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
 
 
